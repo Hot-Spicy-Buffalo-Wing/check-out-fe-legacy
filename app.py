@@ -44,9 +44,9 @@ with st.expander("Create Lookbook"):
     
     province_options=area_df["1단계"].unique().tolist()
     province_selection = st.selectbox("사는 지역", province_options)
-    city_options=area_df[area_df["1단계"]==province_selection]["2단계"].unique().tolist()
+    city_options=area_df[area_df["1단계"]==province_selection]["2단계"].dropna().unique().tolist()
     city_selection = st.selectbox("구/군", city_options)  # 선택지 추가 가능
-    district_options=area_df[area_df["2단계"]==city_selection]["3단계"].unique().tolist()
+    district_options=area_df[area_df["2단계"]==city_selection]["3단계"].dropna().unique().tolist()
     district_selection = st.selectbox("동/읍/면", district_options)  # 선택지 추가 가능
     tpo = st.multiselect("TPO 정보", ['데이트', '여행', '출근', '결혼식 하객으로 참석', '꾸안꾸', '여름코디', '캠퍼스룩', '데일리', '휴양지', '놀이공원', '카페', '운동하러', '축제', '파티', '소개팅'])
 
